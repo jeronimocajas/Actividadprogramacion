@@ -71,7 +71,7 @@ require '../conecciones/obtenerdatos.php'
 <body>
     <div class="container">
         <h2>Formulario de Registro</h2>
-        <form action="procesar_registro.php" method="post">
+        <form action="../conecciones/obtenerdatos.php" method="post">
             <div class="form-group">
                 <label for="vuelo_idvuelo">Vuelo</label>
              <select name="vuelo_idvuelo" id="vuelo_idvuelo"></select>
