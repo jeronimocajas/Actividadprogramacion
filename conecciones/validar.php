@@ -10,7 +10,7 @@ if (isset($_POST['usuario']) && isset($_POST['contraseña'])) {
 
     // Escapa los valores para prevenir SQL Injection
     $username = mysqli_real_escape_string($conexion, $username);
-    $contraseña = sha1(mysqli_real_escape_string($conexion, $contraseña));
+    $contraseña = mysqli_real_escape_string($conexion, $contraseña);
 
     // Consulta la base de datos para verificar si el usuario y contraseña coinciden
     $query = "SELECT * FROM usuario WHERE nombre = '$username' AND constraseña = '$contraseña'";

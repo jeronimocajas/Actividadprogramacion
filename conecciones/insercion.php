@@ -12,10 +12,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
 
     // Aplicar hash a la contraseña
-    $contrasenia_hash = sha1($contrasenia);
+  
 
     // Preparar la consulta SQL
-    $sql = "INSERT INTO usuario (idUsuario, nombre,apellido,email, constraseña, roles_idroles) VALUES ('$identificacion', '$nombre','$apellido','$email', '$contrasenia_hash', 2)";
+    $sql = "INSERT INTO usuario (idUsuario, nombre,apellido,email, constraseña, roles_idroles) VALUES ('$identificacion', '$nombre','$apellido','$email', '$contrasenia', 2)";
 
     if ($conexion->query($sql) === TRUE) {
         header('location: ../paginas/login.php');
