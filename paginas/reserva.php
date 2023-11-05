@@ -1,7 +1,7 @@
-<?php
-require '../conecciones/obtenerdatos.php'
-?>
 
+<?php
+require '../conecciones/obtenerdatos.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +10,7 @@ require '../conecciones/obtenerdatos.php'
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Registro</title>
     <style>
+        /* Tu CSS aquí */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -74,21 +75,47 @@ require '../conecciones/obtenerdatos.php'
         <form action="../conecciones/obtenerdatos.php" method="post">
             <div class="form-group">
                 <label for="vuelo_idvuelo">Vuelo</label>
-             <select name="vuelo_idvuelo" id="vuelo_idvuelo"></select>
+                <select name="vuelo_idvuelo" id="vuelo_idvuelo">
+                    <?php
+                    require '../conecciones/obtenerdatos.php'; // Incluye el archivo para obtener datos
+
+                    if (mysqli_num_rows($vuelo_result) > 0) {
+                        while ($rowVuelo = mysqli_fetch_assoc($vuelo_result)) {
+                            $idVuelo = $rowVuelo['idvuelo'];
+                            $nombreVuelo = $rowVuelo['numerovuelo'];
+                            echo "<option value='$idVuelo'>$nombreVuelo</option>";
+                        }
+                    }
+                    ?>
+                </select>
             </div>
             <div class="form-group">
                 <label for="usuario_idUsuario">ID del Usuario</label>
-                <select name="usuario_idusuario" id="usuario_idusuario"></select>
+                <input type="number" name="usuario_idUsuario">
             </div>
             <div class="form-group">
                 <label for="asientos_idasientos">ID del Asiento</label>
-              <select name="asientos_idasientos" id="asientos_idasientos"></select>
+                <select name="asientos_idasientos" id="asientos_idasientos">
+                    <?php
+                    if (mysqli_num_rows($asientos_result) > 0) {
+                        while ($rowAsiento = mysqli_fetch_assoc($asientos_result)) {
+                            $idAsiento = $rowAsiento['idasientos'];
+                            
+                            echo "<option value='$idAsiento'</option>";
+                        }
+                    }
+                    ?>
+                </select>
             </div>
             <div class="form-group">
-                <label for="asientos_idasientos">Maleta</label>
-                <select name="" id="">
-                    <option value="">SI</option>
-                    <option value="">NO</option>
+                <label for="fecha_reserva">Fecha reserva</label>
+                <input type="date" name="fecha_reserva">
+            </div>
+            <div class="form-group">
+                <label for="maleta">Maleta</label>
+                <select name="maleta" id="maleta">
+                    <option value="SI">SI</option>
+                    <option value="NO">NO</option>
                 </select>
             </div>
             <div class="form-group">
