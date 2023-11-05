@@ -5,8 +5,8 @@ require '../conecciones/validar.php'; // Asumiendo que este archivo está en la 
 <!doctype html>
 <html lang="en">
   <head>
-    <title>J-A-C</title>
-    <link rel="shortcut icon" href="./imagenes/jj.png" type="image/x-icon">
+    <title>S.S.A</title>
+    
     
     <!-- Required meta tags -->
     <meta charset="utf-8">

@@ -7,9 +7,8 @@ require '../conecciones/insercion.php'
 <!doctype html>
 <html lang="en">
   <head>
-  <title>J-A-C</title>
+  <title>S.S.A</title>
   
-        <link rel="icon" type="image/x-icon" href="../imagenes/jj.png" />
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
