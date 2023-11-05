@@ -1,3 +1,8 @@
+<?php
+require '../conecciones/obtenerdatos.php'
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,23 +74,22 @@
         <form action="procesar_registro.php" method="post">
             <div class="form-group">
                 <label for="vuelo_idvuelo">Vuelo</label>
-                <input type="number" id="vuelo_idvuelo" name="vuelo_idvuelo" required>
+             <select name="vuelo_idvuelo" id="vuelo_idvuelo"></select>
             </div>
             <div class="form-group">
                 <label for="usuario_idUsuario">ID del Usuario</label>
-                <input type="number" id="usuario_idUsuario" name="usuario_idUsuario" required>
+                <select name="usuario_idusuario" id="usuario_idusuario"></select>
             </div>
             <div class="form-group">
                 <label for="asientos_idasientos">ID del Asiento</label>
-                <input type="number" id="asientos_idasientos" name="asientos_idasientos" required>
+              <select name="asientos_idasientos" id="asientos_idasientos"></select>
             </div>
             <div class="form-group">
                 <label for="asientos_idasientos">Maleta</label>
-                <label for="si">Sí:</label>
-        <input type="checkbox" id="si" name="respuesta" value="si">
-        <br>
-        <label for="no">No:</label>
-        <input type="checkbox" id="no" name="respuesta" value="no">
+                <select name="" id="">
+                    <option value="">SI</option>
+                    <option value="">NO</option>
+                </select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Registrar">
