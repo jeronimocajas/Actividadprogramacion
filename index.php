@@ -34,6 +34,7 @@
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                         <li class="nav-item"><a class="nav-link" href="./paginas/reserva.php">Reservas vuelos</a></li>
                         <li class="nav-item"><a class="nav-link" href="./paginas/cheking.php">Cheking</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./conecciones/logout.php">Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </div>

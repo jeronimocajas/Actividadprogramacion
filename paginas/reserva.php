@@ -1,7 +1,15 @@
 
 <?php
-require '../conecciones/obtenerdatos.php';
+// Establece la conexión a la base de datos
+require '../conecciones/conexion.php';
+
+// Consulta SQL para seleccionar todos los registros de la tabla de vuelos
+$sql = "SELECT idvuelo FROM vuelo";
+$result = $conexion->query($sql);
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +18,6 @@ require '../conecciones/obtenerdatos.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Registro</title>
     <style>
-        /* Tu CSS aquí */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -71,57 +78,49 @@ require '../conecciones/obtenerdatos.php';
 </head>
 <body>
     <div class="container">
-        <h2>Formulario de Registro</h2>
-        <form action="../conecciones/obtenerdatos.php" method="post">
-            <div class="form-group">
-                <label for="vuelo_idvuelo">Vuelo</label>
-                <select name="vuelo_idvuelo" id="vuelo_idvuelo">
-                    <?php
-                    require '../conecciones/obtenerdatos.php'; // Incluye el archivo para obtener datos
+        <h2>Formulario de Reserva</h2>
+        <form action="../conecciones/guardarregistro.php" method="post">
+    <div class="form-group">
+        <label for="vuelo_idvuelo">Vuelo</label>
+        <select name="vuelo_idvuelo" id="vuelo_idvuelo">
+            <!-- Opciones de vuelos aquí -->
+            <?php
+            // Genera las opciones del select con todos los datos de la tabla de vuelos
+            while ($row = $result->fetch_assoc()) {
+                echo "<option value='" . $row['idvuelo'] . "'>";
+                foreach ($row as $key => $value) {
+                    echo $key . ": " . $value . "<br>";
+                }
+                echo "</option>";
+            }
+            ?>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="usuario_idUsuario">ID del Usuario</label>
+        <input type="number" name="usuario_idUsuario">
+    </div>
+    <div class="form-group">
+        <label for="asientos_idasientos">ID del Asiento</label>
+        <input type="number" name="asientos_idasientos">
+    </div>
+    <div class="form-group">
+        <label for="fecha_reserva">Fecha de reserva</label>
+        <input type="date" name="fecha_reserva">
+    </div>
+    <div class="form-group">
+        <label for="maleta">Maleta</label>
+        <select name="maleta">
+            <option value="SI">SI</option>
+            <option value="NO">NO</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Registrar">
+        <li class="nav-item"><a class="nav-link" href="../conecciones/logout.php">Cerrar Sesión</a></li>
+    </div>
+</form>
 
-                    if (mysqli_num_rows($vuelo_result) > 0) {
-                        while ($rowVuelo = mysqli_fetch_assoc($vuelo_result)) {
-                            $idVuelo = $rowVuelo['idvuelo'];
-                            $nombreVuelo = $rowVuelo['numerovuelo'];
-                            echo "<option value='$idVuelo'>$nombreVuelo</option>";
-                        }
-                    }
-                    ?>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="usuario_idUsuario">ID del Usuario</label>
-                <input type="number" name="usuario_idUsuario">
-            </div>
-            <div class="form-group">
-                <label for="asientos_idasientos">ID del Asiento</label>
-                <select name="asientos_idasientos" id="asientos_idasientos">
-                    <?php
-                    if (mysqli_num_rows($asientos_result) > 0) {
-                        while ($rowAsiento = mysqli_fetch_assoc($asientos_result)) {
-                            $idAsiento = $rowAsiento['idasientos'];
-                            
-                            echo "<option value='$idAsiento'</option>";
-                        }
-                    }
-                    ?>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="fecha_reserva">Fecha reserva</label>
-                <input type="date" name="fecha_reserva">
-            </div>
-            <div class="form-group">
-                <label for="maleta">Maleta</label>
-                <select name="maleta" id="maleta">
-                    <option value="SI">SI</option>
-                    <option value="NO">NO</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Registrar">
-            </div>
-        </form>
     </div>
 </body>
 </html>

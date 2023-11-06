@@ -1,4 +1,6 @@
 <?php
+session_start(); // Inicializa la sesión
+
 // Verifica si las claves "usuario" y "contraseña" existen en $_POST
 if (isset($_POST['usuario']) && isset($_POST['contraseña'])) {
     // Nombre de usuario y contraseña a buscar (recibidos desde el formulario)
@@ -21,6 +23,9 @@ if (isset($_POST['usuario']) && isset($_POST['contraseña'])) {
         // Obtén el rol del usuario
         $row = mysqli_fetch_assoc($result);
         $rol_usuario = $row['roles_idroles'];
+
+        // Establece la variable de sesión con el nombre de usuario
+        $_SESSION['nombre_usuario'] = $username;
 
         // Redirige al usuario según su rol
         if ($rol_usuario == 1) {
